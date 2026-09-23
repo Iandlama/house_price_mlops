@@ -6,6 +6,8 @@ training, and deployment — and runs automatically every 5 minutes via
 Apache Airflow.
 
 Repository: https://github.com/Iandlama/house_price_mlops
+<img width="1019" height="613" alt="image" src="https://github.com/user-attachments/assets/ea4e8707-ffeb-4568-b98b-21de5a801e6c" />
+
 
 ## Contents
 
