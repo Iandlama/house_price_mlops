@@ -173,10 +173,11 @@ The DAG calls:
 The `--force-recreate` flag ensures the API container is restarted with
 the freshly trained model on every run.
 
-> The project path in the DAG file (`PROJECT_DIR` in
-> `services/airflow/dags/house_price_pipeline.py`) is set as an absolute
-> path. If you clone the repo into a different directory or under a
-> different username, update that variable accordingly.
+The DAG resolves the project root automatically from its own file location
+(`Path(__file__).resolve().parents[3]`), so no path needs to be edited
+regardless of where the repository is cloned or which user runs it. The
+only assumption is that the virtual environment is named `venv` and lives
+in the project root, as set up above.
 
 ## Metrics tracking: MLflow
 
