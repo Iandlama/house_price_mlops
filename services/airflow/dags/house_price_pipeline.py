@@ -1,14 +1,15 @@
 from datetime import datetime
+from pathlib import Path
 
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 
-PROJECT_DIR = "/home/amaliya/house_price_mlops"
-PYTHON = f"{PROJECT_DIR}/venv/bin/python"
-COMPOSE_FILE = f"{PROJECT_DIR}/code/deployment/docker-compose.yml"
+PROJECT_DIR = Path(__file__).resolve().parents[3]
+PYTHON = PROJECT_DIR / "venv" / "bin" / "python"
+COMPOSE_FILE = PROJECT_DIR / "code" / "deployment" / "docker-compose.yml"
 
 default_args = {
-    "owner": "amaliya",
+    "owner": "airflow",
     "retries": 0,
 }
 
@@ -24,12 +25,12 @@ with DAG(
 
     prepare = BashOperator(
         task_id="prepare_data",
-        bash_command=f"{PYTHON} {PROJECT_DIR}/code/datasets/prepare.py",
+        bash_command=f"{PYTHON} {PROJECT_DIR / 'code' / 'datasets' / 'prepare.py'}",
     )
 
     train = BashOperator(
         task_id="train_model",
-        bash_command=f"{PYTHON} {PROJECT_DIR}/code/models/train.py",
+        bash_command=f"{PYTHON} {PROJECT_DIR / 'code' / 'models' / 'train.py'}",
     )
 
     deploy = BashOperator(
