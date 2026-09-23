@@ -8,3 +8,4 @@ services/airflow/airflow.db-shm
 services/airflow/airflow.db-wal
 services/airflow/logs/
 services/airflow/simple_auth_manager_passwords.json.generated
+__pycache__/
